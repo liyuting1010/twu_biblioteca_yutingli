@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/biblioteca.iml" filepath="$PROJECT_DIR$/biblioteca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.twu_biblioteca_yutingli.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.twu_biblioteca_yutingli.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.twu_biblioteca_yutingli.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.twu_biblioteca_yutingli.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/twu_biblioteca_yutingli.iml" filepath="$PROJECT_DIR$/twu_biblioteca_yutingli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/twu_biblioteca_yutingli.main.iml" filepath="$PROJECT_DIR$/.idea/modules/twu_biblioteca_yutingli.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/twu_biblioteca_yutingli.test.iml" filepath="$PROJECT_DIR$/.idea/modules/twu_biblioteca_yutingli.test.iml" />
     </modules>
   </component>
 </project>
-
