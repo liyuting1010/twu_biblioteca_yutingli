@@ -1,0 +1,40 @@
+version: "2.1"
+services:
+  _base:
+    image: gradle:5.4-jdk8
+    volumes:
+      - .:/app
+      - gradle-cache:/home/gradle/.gradle
+    working_dir: /app
+    environment:
+      DB_JDBC_URL: jdbc:postgresql://db/bibiloteca_db
+      DB_HOST: db
+      DB_USERNAME: postgres
+      DB_PASSWORD: Password12
+
+  app:
+    extends:
+      service: _base
+    command: ["./gradlew", "clean", "run"]
+    depends_on:
+      - db
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+
+  db:
+    image: postgres:latest
+    container_name: bibiloteca_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      DB_DATABASE: bibiloteca_db
+    volumes:
+      - ./dev/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    ports:
+      - "5432:5432"
+    restart: always
+
+volumes:
+  gradle-cache:
