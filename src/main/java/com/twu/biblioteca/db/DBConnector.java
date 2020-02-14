@@ -1,4 +1,4 @@
-package com.twu.bibiloteca.db;
+package com.twu.biblioteca.db;
 
 import java.sql.Connection;
 

@@ -1,6 +1,6 @@
-package com.twu.bibiloteca;
+package com.twu.biblioteca;
 
-import com.twu.bibiloteca.db.DBConnectorImpl;
+import com.twu.biblioteca.db.DBConnectorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

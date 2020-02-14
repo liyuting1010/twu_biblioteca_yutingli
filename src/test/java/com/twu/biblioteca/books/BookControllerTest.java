@@ -1,7 +1,5 @@
 package com.twu.biblioteca.books;
 
-import com.twu.bibiloteca.books.BookController;
-import com.twu.bibiloteca.books.BookService;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

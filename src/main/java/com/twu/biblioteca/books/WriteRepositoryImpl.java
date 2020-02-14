@@ -1,4 +1,4 @@
-package com.twu.bibiloteca.books;
+package com.twu.biblioteca.books;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

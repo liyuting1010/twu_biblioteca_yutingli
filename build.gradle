@@ -20,7 +20,7 @@ repositories {
 }
 
 bootJar {
-    mainClassName = 'com.twu.bibiloteca.BibliotecaApp'
+    mainClassName = 'com.twu.biblioteca.BibliotecaApp'
 }
 
 dependencies {
@@ -34,4 +34,4 @@ dependencies {
     testCompile("org.springframework:spring-test")
 }
 
-mainClassName = 'com.twu.bibiloteca.BibliotecaApp'
+mainClassName = 'com.twu.biblioteca.BibliotecaApp'

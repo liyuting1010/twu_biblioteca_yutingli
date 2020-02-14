@@ -1,4 +1,4 @@
-package com.twu.bibiloteca.books;
+package com.twu.biblioteca.books;
 
 import org.springframework.stereotype.Service;
 
