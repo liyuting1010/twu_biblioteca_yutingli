@@ -7,10 +7,10 @@ services:
       - gradle-cache:/home/gradle/.gradle
     working_dir: /app
     environment:
-      DB_JDBC_URL: jdbc:postgresql://db/bibiloteca_db
+      DB_JDBC_URL: jdbc:postgresql://db/postgres
       DB_HOST: db
       DB_USERNAME: postgres
-      DB_PASSWORD: Password12
+      DB_PASSWORD: postgres
 
   app:
     extends:
@@ -25,11 +25,11 @@ services:
 
   db:
     image: postgres:latest
-    container_name: bibiloteca_db
+    container_name: postgres-stubb
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      DB_DATABASE: bibiloteca_db
+      DB_DATABASE: postgres
     volumes:
       - ./dev/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     ports:
@@ -38,3 +38,5 @@ services:
 
 volumes:
   gradle-cache:
+  database_data:
+    driver: local
