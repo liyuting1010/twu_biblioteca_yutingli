@@ -1,6 +1,5 @@
 package com.twu.biblioteca.books.getAll;
 
-import com.twu.biblioteca.books.getAll.GetAllServiceImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
 
