@@ -1,4 +1,4 @@
-package com.twu.biblioteca.books.getSingleBook;
+package com.twu.biblioteca.books.getOne;
 
 import com.twu.biblioteca.books.Book;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetSingleBookServiceImplTest {
+public class GetOneBookServiceImplTest {
     private Connection jdbcConnection = Mockito.mock(Connection.class);
     private ResultSet mockResultSet = Mockito.mock(ResultSet.class);
     private PreparedStatement preparedStatement = Mockito.mock(PreparedStatement.class);
@@ -29,7 +29,7 @@ public class GetSingleBookServiceImplTest {
         Mockito.when(jdbcConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")).thenReturn(preparedStatement);
         Mockito.when(preparedStatement.executeQuery()).thenReturn(mockResultSet);
 
-        Book book = new GetSingleBookServiceImpl(jdbcConnection).getBookById(1);
+        Book book = new GetOneBookServiceImpl(jdbcConnection).getBookById(1);
 
         assertEquals(testBook.getId(), book.getId());
         assertEquals(testBook.getName(), book.getName());
@@ -44,6 +44,6 @@ public class GetSingleBookServiceImplTest {
         Mockito.when(jdbcConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")).thenReturn(preparedStatement);
         Mockito.when(preparedStatement.executeQuery()).thenReturn(mockResultSet);
 
-        new GetSingleBookServiceImpl(jdbcConnection).getBookById(1);
+        new GetOneBookServiceImpl(jdbcConnection).getBookById(1);
     }
 }

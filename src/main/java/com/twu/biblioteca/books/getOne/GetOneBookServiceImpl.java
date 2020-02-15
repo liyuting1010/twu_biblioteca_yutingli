@@ -1,4 +1,4 @@
-package com.twu.biblioteca.books.getSingleBook;
+package com.twu.biblioteca.books.getOne;
 
 import com.twu.biblioteca.books.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Service
-public class GetSingleBookServiceImpl implements GetSingleBookService {
+public class GetOneBookServiceImpl implements GetOneBookService {
 
     private final Connection dbConnection;
 
     @Autowired
-    public GetSingleBookServiceImpl(Connection dbConnection) {
+    public GetOneBookServiceImpl(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }
 

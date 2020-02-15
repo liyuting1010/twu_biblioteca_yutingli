@@ -1,8 +1,8 @@
-package com.twu.biblioteca.books.getSingleBook;
+package com.twu.biblioteca.books.getOne;
 
 import com.twu.biblioteca.books.Book;
 
 @FunctionalInterface
-public interface GetSingleBookService {
+public interface GetOneBookService {
     Book getBookById(Integer id);
 }
