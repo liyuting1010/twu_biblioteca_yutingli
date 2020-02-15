@@ -15,6 +15,6 @@ public class GetSingleBookController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity getBookById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(getSingleBookService.getBookById(id));
     }
 }
