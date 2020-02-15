@@ -1,5 +1,6 @@
-package com.twu.biblioteca.books;
+package com.twu.biblioteca.books.getAll;
 
+import com.twu.biblioteca.books.getAll.GetAllService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class GetAllServiceImpl implements GetAllService {
 
     private final Connection dbConnection;
 
     @Autowired
-    public BookServiceImpl(Connection dbConnection) {
+    public GetAllServiceImpl(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }
 

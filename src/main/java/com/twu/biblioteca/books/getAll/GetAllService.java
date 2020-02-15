@@ -1,8 +1,8 @@
-package com.twu.biblioteca.books;
+package com.twu.biblioteca.books.getAll;
 
 import java.util.List;
 
 @FunctionalInterface
-public interface BookService {
+public interface GetAllService {
     List<String> getAllName();
 }

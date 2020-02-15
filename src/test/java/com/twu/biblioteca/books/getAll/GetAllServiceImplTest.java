@@ -1,5 +1,6 @@
-package com.twu.biblioteca.books;
+package com.twu.biblioteca.books.getAll;
 
+import com.twu.biblioteca.books.getAll.GetAllServiceImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class BookServiceImplTest {
+public class GetAllServiceImplTest {
     @Test
     public void shouldReturnListOfBookNameWhenDbExecutionSuccess() throws SQLException {
         String testName = "some_book_name";
@@ -27,7 +28,7 @@ public class BookServiceImplTest {
         Connection jdbcConnection = Mockito.mock(Connection.class);
         Mockito.when(jdbcConnection.createStatement()).thenReturn(statement);
 
-        List<String> allBookName = new BookServiceImpl(jdbcConnection).getAllName();
+        List<String> allBookName = new GetAllServiceImpl(jdbcConnection).getAllName();
 
         assertEquals(Collections.singletonList(testName), allBookName);
     }
