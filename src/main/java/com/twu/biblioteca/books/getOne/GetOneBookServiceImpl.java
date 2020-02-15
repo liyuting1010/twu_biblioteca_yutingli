@@ -23,7 +23,7 @@ public class GetOneBookServiceImpl implements GetOneBookService {
     @Override
     public Book getBookById(Integer id) {
         try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")) {
-            statement.setString(1, id.toString());
+            statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
