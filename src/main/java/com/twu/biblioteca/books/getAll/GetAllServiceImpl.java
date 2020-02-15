@@ -1,6 +1,6 @@
 package com.twu.biblioteca.books.getAll;
 
-import com.twu.biblioteca.books.getAll.GetAllService;
+import com.twu.biblioteca.books.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +21,19 @@ public class GetAllServiceImpl implements GetAllService {
     }
 
     @Override
-    public List<String> getAllName() {
-        List<String> nameList = new ArrayList<>();
+    public List<Book> getAllBook() {
+        List<Book> bookList = new ArrayList<>();
 
         try {
-            ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT name FROM books");
+            ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT id, name, author FROM books");
             while (resultSet.next()) {
-                nameList.add(resultSet.getString("name"));
+                bookList.add(new Book(
+                        resultSet.getInt("name"),
+                        resultSet.getString("name"),
+                        resultSet.getString("author")
+                ));
             }
-            return nameList;
+            return bookList;
         } catch (SQLException e) {
             throw new IllegalStateException("could not get all book name list", e);
         }

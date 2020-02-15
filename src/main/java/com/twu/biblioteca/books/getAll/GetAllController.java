@@ -14,6 +14,6 @@ public class GetAllController {
 
     @GetMapping("/getAll")
     public ResponseEntity getAllBooks() {
-        return ResponseEntity.ok().body(getAllService.getAllName());
+        return ResponseEntity.ok().body(getAllService.getAllBook());
     }
 }

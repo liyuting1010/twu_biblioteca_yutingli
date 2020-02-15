@@ -1,12 +1,11 @@
 package com.twu.biblioteca.books.getAll;
 
-import com.twu.biblioteca.books.getAll.GetAllController;
-import com.twu.biblioteca.books.getAll.GetAllService;
+import com.twu.biblioteca.books.Book;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -15,12 +14,12 @@ public class GetAllControllerTest {
 
     @Test
     public void shouldReturn200WithBookNameListWhenCallGetAllBookNameEndpoint() {
-        List<String> bookNameList = Arrays.asList("some_book_1", "some_book_2");
-        GetAllService getAllService = () -> bookNameList;
+        List<Book> bookList = Collections.singletonList(new Book(1, "some_name", "some_author"));
+        GetAllService getAllService = () -> bookList;
 
         ResponseEntity response = new GetAllController(getAllService).getAllBooks();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(bookNameList, response.getBody());
+        assertEquals(bookList, response.getBody());
     }
 }

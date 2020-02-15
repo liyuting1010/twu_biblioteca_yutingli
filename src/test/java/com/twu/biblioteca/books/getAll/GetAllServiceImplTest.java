@@ -1,5 +1,6 @@
 package com.twu.biblioteca.books.getAll;
 
+import com.twu.biblioteca.books.Book;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -14,21 +15,24 @@ import static org.junit.Assert.assertEquals;
 
 public class GetAllServiceImplTest {
     @Test
-    public void shouldReturnListOfBookNameWhenDbExecutionSuccess() throws SQLException {
+    public void shouldReturnListOfBookWhenDbExecutionSuccess() throws SQLException {
         String testName = "some_book_name";
+        String testAuthor = "some_author";
 
         ResultSet mockResultSet = Mockito.mock(ResultSet.class);
         Mockito.when(mockResultSet.next()).thenReturn(true).thenReturn(false);
         Mockito.when(mockResultSet.getString("name")).thenReturn(testName);
+        Mockito.when(mockResultSet.getString("author")).thenReturn(testAuthor);
 
         Statement statement = Mockito.mock(Statement.class);
-        Mockito.when(statement.executeQuery("SELECT name FROM books")).thenReturn(mockResultSet);
+        Mockito.when(statement.executeQuery("SELECT id, name, author FROM books")).thenReturn(mockResultSet);
 
         Connection jdbcConnection = Mockito.mock(Connection.class);
         Mockito.when(jdbcConnection.createStatement()).thenReturn(statement);
 
-        List<String> allBookName = new GetAllServiceImpl(jdbcConnection).getAllName();
+        List<Book> allBook = new GetAllServiceImpl(jdbcConnection).getAllBook();
 
-        assertEquals(Collections.singletonList(testName), allBookName);
+        assertEquals(testName, allBook.get(0).getName());
+        assertEquals(testAuthor, allBook.get(0).getAuthor());
     }
 }
