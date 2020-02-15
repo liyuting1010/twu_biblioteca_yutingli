@@ -2,24 +2,12 @@ CREATE TABLE books
 (
   id     SERIAL PRIMARY KEY,
   name   VARCHAR(250) NOT NULL,
-  author VARCHAR(250)
+  author VARCHAR(250),
+  count  INTEGER NOT NULL CHECK ( count >= 0 )
 );
 
-CREATE TABLE movies
-(
-  id            SERIAL PRIMARY KEY,
-  name          VARCHAR(250) NOT NULL,
-  category VARCHAR(250)
-);
-
-INSERT INTO books(name, author)
+INSERT INTO books(name, author, count)
 VALUES
-('Glimpses of World History', 'Jawaharlal Nehru'),
-('Prison Diary', 'Jay Prakash Narayan'),
-('Why Socialism', 'Jayaprakash Narayan');
-
-INSERT INTO movies(name, category)
-VALUES
-('DANGAL', 'Comedy'),
-('Hichki', 'Action'),
-('Jodhaa Akbar', 'Historical');
+('Glimpses of World History', 'Jawaharlal Nehru', 4),
+('Prison Diary', 'Jay Prakash Narayan', 1),
+('Why Socialism', 'Jayaprakash Narayan', 0);
