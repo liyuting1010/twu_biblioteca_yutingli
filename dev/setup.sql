@@ -28,3 +28,19 @@ VALUES ('Yuting1', 'password1'),
        ('Yuting2', 'password2'),
        ('Yuting3', 'password3');
 
+
+DROP TABLE IF EXISTS borrow_records;
+
+CREATE TABLE IF NOT EXISTS borrow_records
+(
+  id          SERIAL PRIMARY KEY,
+  uid         INTEGER NOT NULL,
+  bid         INTEGER NOT NULL,
+  borrow_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  return_date TIMESTAMP
+);
+
+INSERT INTO borrow_records(uid, bid, borrow_date, return_date)
+VALUES (2, 1, now(), NULL),
+       (3, 2, '2020-01-26 18:00:00', now()),
+       (2, 2, '2020-01-16 07:43:00', NULL);
