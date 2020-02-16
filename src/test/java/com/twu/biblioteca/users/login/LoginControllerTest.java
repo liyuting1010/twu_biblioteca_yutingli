@@ -11,7 +11,8 @@ public class LoginControllerTest {
     public void shouldReturn200WhenUsernameAndPasswordProvide() {
         String username = "some_user";
         String password = "some_password";
-        ResponseEntity response = new LoginController().login(username, password);
+        LoginService loginService = (u, p) -> System.out.println("dummy login service");
+        ResponseEntity response = new LoginController(loginService).login(username, password);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(String.format("Login success. username = %s, hashed_password = %s", username, password.hashCode()),

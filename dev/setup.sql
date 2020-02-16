@@ -19,11 +19,11 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users
 (
   id       SERIAL PRIMARY KEY,
-  name     VARCHAR(250) NOT NULL,
+  username     VARCHAR(250) NOT NULL,
   password VARCHAR(250)
 );
 
-INSERT INTO users(name, password)
+INSERT INTO users(username, password)
 VALUES ('Yuting1', 'password1'),
        ('Yuting2', 'password2'),
        ('Yuting3', 'password3');
