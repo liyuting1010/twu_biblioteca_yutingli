@@ -28,7 +28,7 @@ public class GetAllServiceImpl implements GetAllService {
             ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT id, name, author FROM books");
             while (resultSet.next()) {
                 bookList.add(new Book(
-                        resultSet.getInt("name"),
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("author")
                 ));
