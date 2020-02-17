@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users
 (
   id       SERIAL PRIMARY KEY,
-  username     VARCHAR(250) NOT NULL,
+  username VARCHAR(250) UNIQUE NOT NULL,
   password VARCHAR(250)
 );
 
