@@ -39,6 +39,5 @@ curl -i http://localhost:8080/record/1
 ```
 
 ## TODO List
-1. Frontend page
-2. Support `/register` endpoint for sign up
-3. Support `/addBook` for adding more book 
+1. Frontend page (A frontend react app: https://github.com/liyuting1010/biblioteca_react_yutingli)
+2. Support `/register` endpoint for sign up (done)
