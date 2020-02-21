@@ -28,6 +28,11 @@ curl -i http://localhost:8080/get/{book_id}
 curl -i http://localhost:8080/lend/{book_id}
 ```
 
+4. return a book by its id
+   ```shell
+   curl -i http://localhost:8080/return/{book_id}
+   ```
+
 4. login with username and password
 ```shell
 curl -i http://localhost:8080/login?username="Yuting1"&password="password1"
