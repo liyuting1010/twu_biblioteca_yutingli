@@ -8,23 +8,25 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @Service
-public class LendServiceImpl implements LendService {
+public class LendBookServiceImpl implements LendBookService {
 
     private final Connection dbConnection;
 
     @Autowired
-    public LendServiceImpl(Connection dbConnection) {
+    public LendBookServiceImpl(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }
 
     @Override
-    public void lend(Integer id) {
+    public String lend(Integer id) {
         try (final PreparedStatement statement = dbConnection.prepareStatement("UPDATE books SET count = count - 1 WHERE id = ?")) {
             statement.setInt(1, id);
 
             int rowAffected = statement.executeUpdate();
             if (rowAffected == 0) {
-                throw new IllegalArgumentException("No such book with id = " + id.toString());
+                throw new IllegalArgumentException("No such book with id = " + id);
+            } else {
+                return "Successfully lend the book with id = " + id;
             }
         } catch (final SQLException e) {
             throw new IllegalStateException("error while lend book. ", e);

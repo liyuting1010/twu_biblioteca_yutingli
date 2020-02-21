@@ -8,12 +8,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetAllServiceImplTest {
+public class GetAllBookServiceImplTest {
     @Test
     public void shouldReturnListOfBookWhenDbExecutionSuccess() throws SQLException {
         String testName = "some_book_name";
@@ -30,7 +29,7 @@ public class GetAllServiceImplTest {
         Connection jdbcConnection = Mockito.mock(Connection.class);
         Mockito.when(jdbcConnection.createStatement()).thenReturn(statement);
 
-        List<Book> allBook = new GetAllServiceImpl(jdbcConnection).getAllBook();
+        List<Book> allBook = new GetAllBookServiceImpl(jdbcConnection).getAllBook();
 
         assertEquals(testName, allBook.get(0).getName());
         assertEquals(testAuthor, allBook.get(0).getAuthor());

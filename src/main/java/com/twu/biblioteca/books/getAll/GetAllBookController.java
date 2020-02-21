@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetAllController {
-    private final GetAllService getAllService;
+public class GetAllBookController {
+    private final GetAllBookService getAllBookService;
 
-    public GetAllController(GetAllService getAllService) {
-        this.getAllService = getAllService;
+    public GetAllBookController(GetAllBookService getAllBookService) {
+        this.getAllBookService = getAllBookService;
     }
 
     @GetMapping("/getAll")
     public ResponseEntity getAllBooks() {
         try {
-            return ResponseEntity.ok().body(getAllService.getAllBook());
+            return ResponseEntity.ok().body(getAllBookService.getAllBook());
         } catch (IllegalStateException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

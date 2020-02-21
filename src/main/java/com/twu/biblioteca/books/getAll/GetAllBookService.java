@@ -5,6 +5,6 @@ import com.twu.biblioteca.books.Book;
 import java.util.List;
 
 @FunctionalInterface
-public interface GetAllService {
+public interface GetAllBookService {
     List<Book> getAllBook();
 }

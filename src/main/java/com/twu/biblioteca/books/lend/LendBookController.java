@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LendController {
-    private final LendService lendService;
+public class LendBookController {
+    private final LendBookService lendBookService;
 
-    public LendController(LendService lendService) {
-        this.lendService = lendService;
+    public LendBookController(LendBookService lendBookService) {
+        this.lendBookService = lendBookService;
     }
 
     @PostMapping("/lend/{id}")
     public ResponseEntity lendBookById(@PathVariable Integer id) {
         try{
-            lendService.lend(id);
-            return ResponseEntity.ok().body("Successfully lend the book with id = " + id.toString());
+            return ResponseEntity.ok().body(lendBookService.lend(id));
         } catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (IllegalStateException e){

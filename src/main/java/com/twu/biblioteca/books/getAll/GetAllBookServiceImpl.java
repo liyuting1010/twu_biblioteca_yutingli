@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetAllServiceImpl implements GetAllService {
+public class GetAllBookServiceImpl implements GetAllBookService {
 
     private final Connection dbConnection;
 
     @Autowired
-    public GetAllServiceImpl(Connection dbConnection) {
+    public GetAllBookServiceImpl(Connection dbConnection) {
         this.dbConnection = dbConnection;
     }
 
