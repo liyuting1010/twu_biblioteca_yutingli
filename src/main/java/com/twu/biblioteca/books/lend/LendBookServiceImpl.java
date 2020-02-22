@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Service
@@ -23,13 +24,21 @@ public class LendBookServiceImpl implements LendBookService {
             statement.setInt(1, id);
 
             int rowAffected = statement.executeUpdate();
-            if (rowAffected == 0) {
-                throw new IllegalArgumentException("No such book with id = " + id);
+            if (rowAffected == 1) {
+                final PreparedStatement queryStatement = dbConnection.prepareStatement("SELECT count FROM books WHERE id = ?");
+                queryStatement.setInt(1, id);
+                ResultSet resultSet = queryStatement.executeQuery();
+                if (resultSet.next()) {
+                    return String.format("Successfully lend the book with id = %d. Available book amount = %d", id, resultSet.getInt("count"));
+                }
+                else {
+                    throw new IllegalStateException("error while lend book");
+                }
             } else {
-                return "Successfully lend the book with id = " + id;
+                throw new IllegalArgumentException("No such book with id = " + id);
             }
         } catch (final SQLException e) {
-            throw new IllegalStateException("error while lend book. ", e);
+            throw new IllegalStateException("error while lend book. No available book", e);
         }
     }
 }
