@@ -22,18 +22,20 @@ public class RecordsServiceImpl implements RecordsService {
 
     @Override
     public List<Book> get(Integer userId) {
-        List<Book> bookList = new ArrayList<>();
-        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT books.id, books.name, books.author FROM borrow_records JOIN books ON books.id = borrow_records.bid WHERE uid = ?")) {
+        List<Book> recordList = new ArrayList<>();
+        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT books.id, books.name, books.author, book.publication_year FROM borrow_records JOIN books ON books.id = borrow_records.bid WHERE uid = ?")) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                bookList.add(new Book(
+                Book book = new Book(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        resultSet.getString("author")
-                ));
+                        resultSet.getString("author"),
+                        resultSet.getInt("publication_year")
+                );
+                recordList.add(book);
             }
-            return bookList;
+            return recordList;
         } catch (final SQLException e) {
             throw new IllegalStateException("error while get book record. ", e);
         }

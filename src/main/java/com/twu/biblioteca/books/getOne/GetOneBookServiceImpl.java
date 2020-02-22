@@ -22,12 +22,12 @@ public class GetOneBookServiceImpl implements GetOneBookService {
 
     @Override
     public Book getBookById(Integer id) {
-        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")) {
+        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT name, author, publication_year FROM books WHERE id = ?")) {
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return new Book(id, resultSet.getString("name"), resultSet.getString("author"));
+                return new Book(id, resultSet.getString("name"), resultSet.getString("author"), resultSet.getInt("publication_year"));
             } else {
                 throw new IllegalArgumentException("Could not find the book by id = " + id.toString());
             }

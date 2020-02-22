@@ -25,12 +25,13 @@ public class GetAllBookServiceImpl implements GetAllBookService {
         List<Book> bookList = new ArrayList<>();
 
         try {
-            ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT id, name, author FROM books");
+            ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT id, name, author, publication_year FROM books");
             while (resultSet.next()) {
                 bookList.add(new Book(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        resultSet.getString("author")
+                        resultSet.getString("author"),
+                        resultSet.getInt("publication_year")
                 ));
             }
             return bookList;
