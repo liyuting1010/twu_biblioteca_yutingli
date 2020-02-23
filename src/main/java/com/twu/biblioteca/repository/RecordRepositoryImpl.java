@@ -42,4 +42,28 @@ public class RecordRepositoryImpl implements RecordRepository {
             throw new IllegalStateException("error while get user record. ", e);
         }
     }
+
+    @Override
+    public Integer addLendRecord(Integer userId, Integer bookId) {
+        try (final PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO borrow_records(uid, bid, borrow_date, return_date) VALUES (?, ?, now(), NULL)")) {
+            statement.setInt(1, userId);
+            statement.setInt(2, bookId);
+
+            return statement.executeUpdate();
+        } catch (final SQLException e) {
+            throw new IllegalStateException("error while add record.", e);
+        }
+    }
+
+    @Override
+    public Integer updateReturnRecord(Integer userId, Integer bookId) {
+        try (final PreparedStatement statement = dbConnection.prepareStatement("UPDATE borrow_records SET return_date = now() WHERE uid = ? AND bid = ?")) {
+            statement.setInt(1, userId);
+            statement.setInt(2, bookId);
+
+            return statement.executeUpdate();
+        } catch (final SQLException e) {
+            throw new IllegalStateException("error while add record.", e);
+        }
+    }
 }

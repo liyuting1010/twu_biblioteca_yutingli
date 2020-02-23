@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,9 +17,10 @@ public class ReturnBookController {
     }
 
     @PostMapping("/return/{id}")
-    public ResponseEntity returnBook(@PathVariable Integer id) {
+    public ResponseEntity returnBook(@PathVariable Integer id,
+                                     @RequestParam String username) {
         try{
-            return ResponseEntity.ok().body(returnBookService.returnBook(id));
+            return ResponseEntity.ok().body(returnBookService.returnBook(id, username));
         } catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (IllegalStateException e){

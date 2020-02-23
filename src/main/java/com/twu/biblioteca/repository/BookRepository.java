@@ -9,4 +9,5 @@ public interface BookRepository {
     Book getById(Integer id);
     Integer checkout(Integer id);
     Integer getCount(Integer id);
+    Integer returnBook(Integer id);
 }

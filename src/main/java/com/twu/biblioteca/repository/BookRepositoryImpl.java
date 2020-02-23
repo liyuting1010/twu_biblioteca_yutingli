@@ -80,4 +80,15 @@ public class BookRepositoryImpl implements BookRepository {
         }
 
     }
+
+    @Override
+    public Integer returnBook(Integer id) {
+        try (final PreparedStatement statement = dbConnection.prepareStatement("UPDATE books SET count = count + 1 WHERE id = ?")) {
+            statement.setInt(1, id);
+
+            return statement.executeUpdate();
+        } catch (final SQLException e) {
+            throw new IllegalStateException("error while return book. ", e);
+        }
+    }
 }
