@@ -18,7 +18,7 @@ public class GetOneBookServiceImplTest {
 
     @Test
     public void shouldReturnListOfBookNameWhenDbExecutionSuccess() throws SQLException {
-        Book testBook = new Book(1, "some_book_name", "some_author");
+        Book testBook = new Book(1, "some_book_name", "some_author", 2000);
 
         Mockito.when(mockResultSet.next()).thenReturn(true).thenReturn(false);
         Mockito.when(mockResultSet.getString("name")).thenReturn(testBook.getName());
@@ -26,7 +26,7 @@ public class GetOneBookServiceImplTest {
 
         PreparedStatement preparedStatement = Mockito.mock(PreparedStatement.class);
 
-        Mockito.when(jdbcConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")).thenReturn(preparedStatement);
+        Mockito.when(jdbcConnection.prepareStatement("SELECT name, author, publication_year FROM books WHERE id = ?")).thenReturn(preparedStatement);
         Mockito.when(preparedStatement.executeQuery()).thenReturn(mockResultSet);
 
         Book book = new GetOneBookServiceImpl(jdbcConnection).getBookById(1);
@@ -41,7 +41,7 @@ public class GetOneBookServiceImplTest {
 
         ResultSet mockResultSet = Mockito.mock(ResultSet.class);
         Mockito.when(mockResultSet.next()).thenReturn(false);
-        Mockito.when(jdbcConnection.prepareStatement("SELECT name, author FROM books WHERE id = ?")).thenReturn(preparedStatement);
+        Mockito.when(jdbcConnection.prepareStatement("SELECT name, author, publication_year FROM books WHERE id = ?")).thenReturn(preparedStatement);
         Mockito.when(preparedStatement.executeQuery()).thenReturn(mockResultSet);
 
         new GetOneBookServiceImpl(jdbcConnection).getBookById(1);

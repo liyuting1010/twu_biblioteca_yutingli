@@ -14,7 +14,7 @@ public class GetAllBookControllerTest {
 
     @Test
     public void shouldReturn200WithBookNameListWhenGetAllBookSuccess() {
-        List<Book> bookList = Collections.singletonList(new Book(1, "some_name", "some_author"));
+        List<Book> bookList = Collections.singletonList(new Book(1, "some_name", "some_author", 2000));
         GetAllBookService getAllBookService = () -> bookList;
 
         ResponseEntity response = new GetAllBookController(getAllBookService).getAllBooks();

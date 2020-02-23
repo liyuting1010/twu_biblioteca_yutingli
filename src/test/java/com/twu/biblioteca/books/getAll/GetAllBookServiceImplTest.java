@@ -24,7 +24,7 @@ public class GetAllBookServiceImplTest {
         Mockito.when(mockResultSet.getString("author")).thenReturn(testAuthor);
 
         Statement statement = Mockito.mock(Statement.class);
-        Mockito.when(statement.executeQuery("SELECT id, name, author FROM books")).thenReturn(mockResultSet);
+        Mockito.when(statement.executeQuery("SELECT id, name, author, publication_year FROM books")).thenReturn(mockResultSet);
 
         Connection jdbcConnection = Mockito.mock(Connection.class);
         Mockito.when(jdbcConnection.createStatement()).thenReturn(statement);

@@ -11,7 +11,7 @@ public class GetOneBookControllerTest {
 
     @Test
     public void shouldReturn200WhenGetBookByIdSuccess() {
-        Book book = new Book(1, "some_name", "some_author");
+        Book book = new Book(1, "some_name", "some_author", 2000);
         GetOneBookService getOneBookService = id -> book;
 
         ResponseEntity response = new GetOneBookController(getOneBookService).getBookById(1);
