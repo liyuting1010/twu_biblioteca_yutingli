@@ -17,7 +17,7 @@ public class RecordsServiceImpl implements RecordsService {
     }
 
     @Override
-    public List<Record> get(Integer userId) {
-        return new RecordRepositoryImpl(dbConnection).getRecordsById(userId);
+    public List<Record> get(String username) {
+        return new RecordRepositoryImpl(dbConnection).getRecordsById(username);
     }
 }

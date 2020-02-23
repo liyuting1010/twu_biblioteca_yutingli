@@ -15,10 +15,10 @@ public class RecordsController {
         this.recordsService = recordsService;
     }
 
-    @GetMapping("/record/{uid}")
-    public ResponseEntity record(@PathVariable("uid") Integer userId) {
+    @GetMapping("/record/{username}")
+    public ResponseEntity record(@PathVariable("username") String username) {
         try {
-            return ResponseEntity.ok().body(recordsService.get(userId));
+            return ResponseEntity.ok().body(recordsService.get(username));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (IllegalStateException e) {

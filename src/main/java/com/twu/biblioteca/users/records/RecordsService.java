@@ -4,5 +4,5 @@ import java.util.List;
 
 @FunctionalInterface
 public interface RecordsService {
-    List<Record> get(Integer userId);
+    List<Record> get(String username);
 }

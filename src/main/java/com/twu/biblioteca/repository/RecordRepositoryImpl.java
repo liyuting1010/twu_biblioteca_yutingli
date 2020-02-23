@@ -19,10 +19,14 @@ public class RecordRepositoryImpl implements RecordRepository {
     }
 
     @Override
-    public List<Record> getRecordsById(Integer userId) {
+    public List<Record> getRecordsById(String username) {
         List<Record> recordList = new ArrayList<>();
-        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT books.id, books.name, borrow_records.borrow_date, borrow_records.return_date FROM borrow_records JOIN books ON books.id = borrow_records.bid WHERE uid = ?")) {
-            statement.setInt(1, userId);
+        try (final PreparedStatement statement = dbConnection.prepareStatement(
+                "SELECT books.id, books.name, borrow_records.borrow_date, borrow_records.return_date " +
+                        "FROM borrow_records JOIN books ON books.id = borrow_records.bid " +
+                        "JOIN users ON users.id = borrow_records.uid " +
+                        "WHERE users.username = ?")) {
+            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Record record = new Record(

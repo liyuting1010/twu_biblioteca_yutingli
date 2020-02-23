@@ -5,5 +5,5 @@ import com.twu.biblioteca.users.records.Record;
 import java.util.List;
 
 public interface RecordRepository {
-    List<Record> getRecordsById(Integer userId);
+    List<Record> getRecordsById(String username);
 }
