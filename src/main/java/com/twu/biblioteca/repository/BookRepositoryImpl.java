@@ -1,6 +1,6 @@
 package com.twu.biblioteca.repository;
 
-import com.twu.biblioteca.books.Record;
+import com.twu.biblioteca.books.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
@@ -19,13 +19,13 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public List<Record> getAll() {
-        List<Record> bookList = new ArrayList<>();
+    public List<Book> getAll() {
+        List<Book> bookList = new ArrayList<>();
 
         try {
             ResultSet resultSet = dbConnection.createStatement().executeQuery("SELECT id, name, author, publication_year FROM books");
             while (resultSet.next()) {
-                bookList.add(new Record(
+                bookList.add(new Book(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("author"),
@@ -39,13 +39,13 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public Record getById(Integer id) {
+    public Book getById(Integer id) {
         try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT name, author, publication_year FROM books WHERE id = ?")) {
             statement.setInt(1, id);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return new Record(id, resultSet.getString("name"), resultSet.getString("author"), resultSet.getInt("publication_year"));
+                return new Book(id, resultSet.getString("name"), resultSet.getString("author"), resultSet.getInt("publication_year"));
             } else {
                 throw new IllegalArgumentException("Could not find the book by id = " + id.toString());
             }

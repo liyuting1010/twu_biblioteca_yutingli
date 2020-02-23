@@ -1,6 +1,6 @@
 package com.twu.biblioteca.repository;
 
-import com.twu.biblioteca.books.Record;
+import com.twu.biblioteca.users.records.Record;
 
 import java.util.List;
 
