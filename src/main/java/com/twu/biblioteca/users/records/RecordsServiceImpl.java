@@ -23,7 +23,7 @@ public class RecordsServiceImpl implements RecordsService {
     @Override
     public List<Book> get(Integer userId) {
         List<Book> recordList = new ArrayList<>();
-        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT books.id, books.name, books.author, book.publication_year FROM borrow_records JOIN books ON books.id = borrow_records.bid WHERE uid = ?")) {
+        try (final PreparedStatement statement = dbConnection.prepareStatement("SELECT books.id, books.name, books.author, books.publication_year FROM borrow_records JOIN books ON books.id = borrow_records.bid WHERE uid = ?")) {
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
