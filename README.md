@@ -25,13 +25,13 @@ curl -i http://localhost:8080/get/{book_id}
 
 3. lend a book by its id
 ```shell
-curl -i http://localhost:8080/lend/{book_id}
+curl -i http://localhost:8080/lend/{book_id} -d "username=Yuting1"
 ```
 
 4. return a book by its id
-   ```shell
-   curl -i http://localhost:8080/return/{book_id}
-   ```
+```shell
+curl -i http://localhost:8080/return/{book_id} -d "username=Yuting1"
+```
 
 4. login with username and password
 ```shell
